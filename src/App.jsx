@@ -16,7 +16,7 @@ import HomeSection from "./components/HomeSection";
 import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
-import TestimonialsSection from "./components/TestimonialsSection";
+// import TestimonialsSection from "./components/TestimonialsSection"; WE WILL ADD THIS LATER 
 import ContactSection from "./components/ContactSection";
 
 const App = () => {
@@ -71,8 +71,12 @@ const App = () => {
         );
       case "skills":
         return <SkillsSection />;
-      case "testimonials":
-        return <TestimonialsSection />;
+
+
+      // case "testimonials":
+      //   return <TestimonialsSection />;
+
+
       case "contact":
         return (
           <ContactSection
@@ -122,13 +126,13 @@ const App = () => {
       <main className="pt-20">{renderActiveSection()}</main>
 
       {/* Footer */}
-      <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
+      {/* <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-white/60">
             Made with 💜 by Sooraj • © 2025 All rights reserved
           </p>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

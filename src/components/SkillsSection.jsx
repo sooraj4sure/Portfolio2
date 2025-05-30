@@ -4,10 +4,24 @@ const skills = [
     //removing skill % for now 
   { name: "React", level: 95, icon: "⚛️" },
   { name: "JavaScript", level: 90, icon: "📈" },
-  { name: "TypeScript", level: 85, icon: "📊" },
-  { name: "CSS/SCSS", level: 92, icon: "🎨" },
+  { name: "Next.Js", level: 85, icon: "📊" },
+  { name: "CSS", level: 92, icon: "🎨" },
   { name: "Node.js", level: 80, icon: "🟢" },
-  { name: "UI/UX Design", level: 88, icon: "🎭" }
+  { name: "Express.Js", level: 88, icon: "🕸️" },
+  { name: "MongoDb", level: 88, icon: "🌿" },
+  { name: "UI/UX Design", level: 88, icon: "🎭" },
+  { name: "C", level: 88, icon: "🅒" },
+  { name: "C++", level: 88, icon: "🅒➕➕" },
+  { name: "Java", level: 68, icon: "☕" },
+  { name: "Python", level: 88, icon: "🐍" },
+  { name: "Responsive Design", level: 88, icon: "📱" },
+  { name: "MySQL", level: 88, icon: "🐬" },
+  { name: "Git / Version Control", level: 88, icon: "🌐" },
+  { name: "REST API", level: 88, icon: "🔌" },
+  { name: "Tailwind", level: 88, icon: "🍂" },
+  { name: "Bootstrap", level: 88, icon: "🅱️" },
+  { name: "Material UI", level: 88, icon: "🧩" },
+  { name: "HTML", level: 88, icon: "📄" },
 ];
 
 const SkillsSection = () => (

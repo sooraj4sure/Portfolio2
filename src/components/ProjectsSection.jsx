@@ -2,48 +2,179 @@ import React from 'react';
 import { Eye, Github } from 'lucide-react';
 
 const projects = [
+
+     {
+    id: 5,
+    name: "WeMeet",
+    description: "MERN stack video calling app using Socket.IO and WebRTC.",
+    tech: ["React", "Node.js", "MongoDB", "WebRTC", "Socket.IO","Express",],
+    category: "MERN",
+    image: "📹",
+    color: "from-teal-300/20 to-blue-200/20",
+    link: "https://we-meet-video-calling-app.vercel.app/",
+    code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-"
+  },
+
+   {
+    id: 14,
+    name: "My Portfolio ",
+    description: "Personal portfolio showcasing projects and skills with responsive design.",
+    tech: ["React", "CSS", "JavaScript"],
+    category: "React",
+    image: "🌐",
+    color: "from-cyan-300/20 to-blue-400/20",
+    link: "https://sooraj-khaki.vercel.app/",
+    code: "https://github.com/sooraj4sure/Portfolio2"
+  },
   {
     id: 1,
-    name: "Neon Dashboard",
-    description: "A futuristic admin dashboard with glassmorphism design and real-time data visualization",
-    tech: ["React", "TypeScript", "D3.js", "Tailwind"],
-    category: "React",
-    image: "🎛️",
-    color: "from-purple-500/20 to-pink-500/20"
+    name: "Random Joke (Joker)",
+    description: "A lightweight web app that fetches and displays random jokes from a public API with a clean UI and instant joke refresh.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    category: "JavaScript",
+    image: "🃏",
+    color: "from-yellow-200/20 to-orange-300/20",
+    link: "https://random-joke-generator-react-js.vercel.app/",
+    code: "https://github.com/sooraj4sure/Random-joke-generator-react.js-"
   },
-  {
-    id: 2,
-    name: "Vibe Music App",
-    description: "A Spotify-inspired music streaming app with playlist management and audio visualization",
-    tech: ["React", "Node.js", "MongoDB", "Web Audio API"],
-    category: "React",
-    image: "🎵",
-    color: "from-blue-500/20 to-cyan-500/20"
-  },
+
   {
     id: 3,
-    name: "Retro Game Hub",
-    description: "Classic arcade games recreated with modern web technologies and pixel-perfect animations",
-    tech: ["JavaScript", "Canvas API", "CSS3", "HTML5"],
+    name: "Rock-Paper-Scissor Game",
+    description: "Play against the computer with randomized logic and score tracking.",
+    tech: ["HTML", "CSS", "JavaScript"],
     category: "JavaScript",
-    image: "🕹️",
-    color: "from-green-500/20 to-teal-500/20"
+    image: "✊✋✌️",
+    color: "from-pink-200/20 to-yellow-200/20",
+    link: "https://rock-paper-scissor-one-drab.vercel.app/",
+    code: "https://github.com/sooraj4sure/Rock-Paper-Scissor"
   },
+  
+
+  
+ 
   {
     id: 4,
-    name: "Aesthetic Blog",
-    description: "A minimalist blogging platform with markdown support and aesthetic typography",
-    tech: ["Next.js", "MDX", "Styled Components"],
+    name: "My Portfolio 2",
+    description: "Personal portfolio showcasing projects and skills with responsive design.",
+    tech: ["React", "CSS", "JavaScript"],
+    category: "React",
+    image: "🌐",
+    color: "from-cyan-300/20 to-blue-400/20",
+    link: "https://sooraj-khaki.vercel.app/",
+    code: "https://github.com/sooraj4sure/My-Portfolio"
+  },
+ 
+  {
+    id: 2,
+    name: "Tic Tac Toe Game",
+    description: "Classic 2-player game with real-time win detection and clean UI.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    category: "JavaScript",
+    image: "❌⭕",
+    color: "from-blue-300/20 to-indigo-300/20",
+    link: "https://tic-tac-toe-ten-phi-32.vercel.app/",
+    code: "https://github.com/sooraj4sure/TicTacToe"
+  },
+  {
+    id: 6,
+    name: "Satvic Movement",
+    description: "Responsive clone of the Satvic Movement's 21-Day Yoga Sadhana page.",
+    tech: ["HTML", "CSS", "JavaScript"],
     category: "Design",
-    image: "✨",
-    color: "from-orange-500/20 to-red-500/20"
-  }
+    image: "🧘",
+    color: "from-green-200/20 to-lime-200/20",
+    link: "https://satvic-movement-three.vercel.app/",
+    code: "https://github.com/sooraj4sure/Satvic-Movement"
+  },
+  {
+    id: 7,
+    name: "Weather App",
+    description: "Dynamic weather app with real-time API data and responsive UI.",
+    tech: ["React", "API", "CSS"],
+    category: "React",
+    image: "☁️",
+    color: "from-sky-300/20 to-blue-300/20",
+    link: "https://weather-mrriu5d1v-soorajs-projects-e8a2060f.vercel.app/",
+    code: "https://github.com/sooraj4sure/Weather-App"
+  },
+  {
+    id: 8,
+    name: "SoftSell (UI)",
+    description: "Landing page for used software license marketplace with modern UI.",
+    tech: ["React", "Tailwind"],
+    category: "Design",
+    image: "💽",
+    color: "from-fuchsia-200/20 to-violet-200/20",
+    link: "https://softsell-7isf.vercel.app/",
+    code: "https://github.com/sooraj4sure/Softsell"
+  },
+  {
+    id: 9,
+    name: "Student Dashboard",
+    description: "React-based dashboard with Firebase auth and real-time student data.",
+    tech: ["React", "Firebase"],
+    category: "React",
+    image: "🎓",
+    color: "from-rose-200/20 to-amber-200/20",
+    link: "https://student-dashboard-yxxf.vercel.app/",
+    code: "https://github.com/sooraj4sure/student-dashboard"
+  },
+  {
+    id: 10,
+    name: "Spotify Landing Page (Desktop)",
+    description: "Spotify-inspired React landing page with sleek layout (desktop only).",
+    tech: ["React", "CSS"],
+    category: "Design",
+    image: "🎵",
+    color: "from-green-400/20 to-black/20",
+    link: "https://spotify-landing-page-gamma.vercel.app/",
+    code: "https://github.com/sooraj4sure/SpotifyLandingPage"
+  },
+  {
+    id: 11,
+    name: "User Dashboard (Avatars)",
+    description: "Responsive user dashboard with authentication and real-time profile management.",
+    tech: ["React", "Firebase"],
+    category: "React",
+    image: "👤",
+    color: "from-gray-200/20 to-blue-200/20",
+    link: "https://user-dashboard-nine-smoky.vercel.app/",
+    code: "https://github.com/sooraj4sure/UserDashboard-assignment-"
+  },
+  {
+    id: 12,
+    name: "Employee Management System",
+    description: "Full-stack dashboard for employee management with role-based access.",
+    tech: ["React", "Node.js", "MongoDB","Express"],
+    category: "MERN",
+    image: "👥",
+    color: "from-orange-300/20 to-yellow-300/20",
+    link: "https://employee-management-system-sigma-nine.vercel.app/",
+    code: "https://github.com/sooraj4sure/Employee-Management-System"
+  },
+  {
+    id: 13,
+    name: "Heavenly Stays",
+    description: "MERN Airbnb-style platform for unique property rentals.",
+    tech: ["React", "Node.js", "MongoDB", "Express"],
+    category: "MERN",
+    image: "🏠",
+    color: "from-pink-300/20 to-rose-300/20",
+    // link: "https://github.com/sooraj4sure/Havenly-Stays--MERN-project",
+    code: "https://github.com/sooraj4sure/Havenly-Stays--MERN-project"
+  },
 ];
+// ... Add the rest with optional code link
+
 
 const ProjectsSection = ({ selectedFilter, setSelectedFilter }) => {
-  const filteredProjects = selectedFilter === 'all'
-    ? projects
-    : projects.filter(project => project.category.toLowerCase() === selectedFilter.toLowerCase());
+  const filteredProjects =
+    selectedFilter === 'all'
+      ? projects
+      : projects.filter(
+          (project) => project.category.toLowerCase() === selectedFilter.toLowerCase()
+        );
 
   return (
     <section className="min-h-screen py-20">
@@ -55,7 +186,7 @@ const ProjectsSection = ({ selectedFilter, setSelectedFilter }) => {
           <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-8"></div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {["all", "react", "javascript", "design"].map((filter) => (
+            {["all", "react", "javascript", "MERN","Design"].map((filter) => (
               <button
                 key={filter}
                 onClick={() => setSelectedFilter(filter)}
@@ -101,14 +232,27 @@ const ProjectsSection = ({ selectedFilter, setSelectedFilter }) => {
               </div>
 
               <div className="flex gap-4">
-                <button className="flex items-center px-4 py-2 bg-purple-500/20 text-purple-300 rounded-lg hover:bg-purple-500/30 transition-all duration-300">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center px-4 py-2 bg-purple-500/20 text-purple-300 rounded-lg hover:bg-purple-500/30 transition-all duration-300"
+                >
                   <Eye size={16} className="mr-2" />
                   Live Demo
-                </button>
-                <button className="flex items-center px-4 py-2 bg-white/10 text-white/80 rounded-lg hover:bg-white/20 transition-all duration-300">
-                  <Github size={16} className="mr-2" />
-                  Code
-                </button>
+                </a>
+
+                {project.code && (
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center px-4 py-2 bg-white/10 text-white/80 rounded-lg hover:bg-white/20 transition-all duration-300"
+                  >
+                    <Github size={16} className="mr-2" />
+                    Code
+                  </a>
+                )}
               </div>
 
               <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>

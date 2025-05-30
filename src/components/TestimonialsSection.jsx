@@ -2,13 +2,13 @@ import React from 'react';
 
 const testimonials = [
   {
-    name: "Sarah Chen",
+    name: "Sooraj",
     role: "Product Manager",
     text: "Working with them was incredible. They brought our vision to life with such creativity and technical excellence!",
     avatar: "👩‍🏢"
   },
   {
-    name: "Alex Rivera",
+    name: "sooraj",
     role: "Startup Founder",
     text: "The attention to detail and modern design sensibilities are unmatched. Highly recommend!",
     avatar: "👨‍💻"
