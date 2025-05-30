@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Download, Contact } from "lucide-react";
 import { Link } from 'react-router-dom';
-import devImg from "/src/assets/luffy1.png"; 
+import devImg from "../assets/luffy1.png"; 
 
 const HomeSection = ({ typewriterText }) => (
   <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
