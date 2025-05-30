@@ -10,12 +10,12 @@ const HomeSection = ({ typewriterText }) => (
         <div
           key={i}
           className="absolute w-2 h-2 bg-purple-400/30 rounded-full animate-pulse"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 2}s`,
-            animationDuration: `${2 + Math.random() * 3}s`,
-          }}
+          // style={{
+          //   left: `${Math.random() * 100}%`,
+          //   top: `${Math.random() * 100}%`,
+          //   animationDelay: `${Math.random() * 2}s`,
+          //   animationDuration: `${2 + Math.random() * 3}s`,
+          // }}
         />
       ))}
     </div>
