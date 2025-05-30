@@ -28,7 +28,7 @@ const HomeSection = ({ typewriterText }) => (
             {/* 👩‍💻  */}
             <img
               src="./src/assets/luffy1.png"
-              alt="Luffy"
+              alt=""
               className="w-80 h-auto shadow-2xl shadow-purple-500 rounded-md transition-transform duration-300 ease-in-out hover:scale-110"
               //if you remove the shadow from image square box will remove
             />
