@@ -1,7 +1,8 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Mail, Download, Contact } from "lucide-react";
 import { Link } from 'react-router-dom';
-
+import devImg from "../assets/luffy1.png"; 
 
 const HomeSection = ({ typewriterText }) => (
   <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -26,8 +27,8 @@ const HomeSection = ({ typewriterText }) => (
           <div className=" rounded-full flex items-center justify-center text-8xl transform hover:scale-105 transition-all duration-500 hover:rotate-3 shadow-2xl shadow-purple-500">
             {/* bg-gradient-to-br from-purple-500/20 to-pink-500/20 */}
             {/* 👩‍💻  */}
-            <img
-              src="./src/assets/luffy1.png"
+            <motion.img
+              src={devImg}
               alt=""
               className="w-80 h-auto shadow-2xl shadow-purple-500 rounded-md transition-transform duration-300 ease-in-out hover:scale-110"
               //if you remove the shadow from image square box will remove
