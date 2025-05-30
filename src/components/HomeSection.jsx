@@ -6,20 +6,20 @@ import devImg from "../assets/Luffy1.png";
 
 const HomeSection = ({ typewriterText }) => (
   <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-    <div className="absolute inset-0 overflow-hidden">
+    {/* <div className="absolute inset-0 overflow-hidden">
       {[...Array(20)].map((_, i) => (
         <div
           key={i}
           className="absolute w-2 h-2 bg-purple-400/30 rounded-full animate-pulse"
-          // style={{
-          //   left: `${Math.random() * 100}%`,
-          //   top: `${Math.random() * 100}%`,
-          //   animationDelay: `${Math.random() * 2}s`,
-          //   animationDuration: `${2 + Math.random() * 3}s`,
-          // }}
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 2}s`,
+            animationDuration: `${2 + Math.random() * 3}s`,
+          }}
         />
       ))}
-    </div>
+    </div> */}
 
     <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center relative z-10">
       <div className="flex justify-center md:justify-start">
