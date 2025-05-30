@@ -5,7 +5,7 @@ import {
   Instagram,
   Twitter,
   Mail,
-  MessageCircle,
+  MessageCircle,  
   ArrowRight,
   Menu,
   X,
@@ -16,13 +16,14 @@ import HomeSection from "./components/HomeSection";
 import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
-// import TestimonialsSection from "./components/TestimonialsSection"; WE WILL ADD THIS LATER 
+// import TestimonialsSection from "./components/TestimonialsSection";
 import ContactSection from "./components/ContactSection";
 
 const App = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [showCursor, setShowCursor] = useState(window.innerWidth > 768);
   const [typewriterText, setTypewriterText] = useState("");
   const [selectedFilter, setSelectedFilter] = useState("all");
   const [formData, setFormData] = useState({
@@ -56,6 +57,14 @@ const App = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setShowCursor(window.innerWidth > 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const renderActiveSection = () => {
     switch (activeSection) {
       case "home":
@@ -71,12 +80,8 @@ const App = () => {
         );
       case "skills":
         return <SkillsSection />;
-
-
       // case "testimonials":
       //   return <TestimonialsSection />;
-
-
       case "contact":
         return (
           <ContactSection
@@ -101,20 +106,20 @@ const App = () => {
   };
 
   return (
-    // bg-gradient-to-br from-gray-900 via-purple-900 to-pink-900
     <div
-      className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-red-950
- text-white overflow-x-hidden"
+      className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-red-950 text-white overflow-x-hidden"
     >
-      {/* Custom Cursor */}
-      <div
-        className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out "
-        style={{
-          left: mousePosition.x - 12,
-          top: mousePosition.y - 12,
-          transform: "scale(1)",
-        }}
-      />
+      {/* Custom Cursor - only on desktop */}
+      {showCursor && (
+        <div
+          className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
+          style={{
+            left: mousePosition.x - 12,
+            top: mousePosition.y - 12,
+            transform: "scale(1)",
+          }}
+        />
+      )}
 
       <Navbar
         activeSection={activeSection}
@@ -125,7 +130,7 @@ const App = () => {
 
       <main className="pt-20">{renderActiveSection()}</main>
 
-      {/* Footer */}
+      {/* Footer (commented for now) */}
       {/* <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-white/60">
