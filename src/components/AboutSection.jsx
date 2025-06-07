@@ -16,7 +16,7 @@ const AboutSection = () => (
           <div className="text-6xl text-center mb-8">🚀</div>
           <h3 className="text-3xl font-bold text-white mb-4">My Story</h3>
           <p className="text-white/80 text-lg leading-relaxed">
-            Started coding at 19 with a simple "Hello World" that sparked an obsession. Fast-forward to today, I'm a frontend developer who believes great design and clean code can change the world, one pixel at a time.
+            Started coding at 19 with a simple "Hello World" that sparked an obsession. Fast-forward to today, I'm a full-stack developer who believes great design and clean code can change the world, one pixel at a time.
           </p>
           <p className="text-white/80 text-lg leading-relaxed">
             When I'm not crafting digital experiences, you'll find me exploring new design trends, contributing to open source, or probably overthinking the perfect gradient combination. ✨

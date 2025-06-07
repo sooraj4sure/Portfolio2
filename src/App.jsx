@@ -34,7 +34,7 @@ const App = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
 
-  const fullText = "Frontend Developer & Creative Coder";
+  const fullText = "Web Developer & Creative Coder";
 
   useEffect(() => {
     let index = 0;
