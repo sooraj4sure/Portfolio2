@@ -49,6 +49,17 @@ const projects = [
     link: "https://rock-paper-scissor-one-drab.vercel.app/",
     code: "https://github.com/sooraj4sure/Rock-Paper-Scissor"
   },
+  {
+    id: 15,
+    name: "Solar-System",
+    description: "Solar system with Three.js and JavaScript.",
+    tech: ["Three.js", "CSS", "JavaScript"],
+    category: "JavaScript",
+    image: "💫",
+    color: "from-pink-200/20 to-yellow-200/20",
+    link: "https://solar-system-three-silk.vercel.app/",
+    code: "https://github.com/sooraj4sure/solar-system"
+  },
   
 
   
