@@ -11,8 +11,8 @@ const projects = [
     category: "MERN",
     image: "📹",
     color: "from-teal-500/20 to-blue-100/20",
-    link: "https://we-meet-video-calling-app.vercel.app/",
-    code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-"
+    link: "https://anvi-frontend.vercel.app/",
+    code: "https://github.com/sooraj4sure/anvi-frontend"
   },
      {
     id: 5,
