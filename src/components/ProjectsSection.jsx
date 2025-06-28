@@ -4,6 +4,17 @@ import { Eye, Github } from 'lucide-react';
 const projects = [
 
      {
+    id: 20,
+    name: "Anvi.",
+    description: "MERN STACK, Jewelley shop , two front end pages for admin and customer ",
+    tech: ["React", "Node.js", "MongoDB","Express",],
+    category: "MERN",
+    image: "📹",
+    color: "from-teal-500/20 to-blue-100/20",
+    link: "https://we-meet-video-calling-app.vercel.app/",
+    code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-"
+  },
+     {
     id: 5,
     name: "WeMeet",
     description: "MERN stack video calling app using Socket.IO and WebRTC.",
