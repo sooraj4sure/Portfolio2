@@ -107,12 +107,11 @@ const App = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-black via-purple-950 to-red-950 text-white overflow-x-hidden"
-    >
+      className="min-h-screen bg-black text-green-500 overflow-x-hidden font-mono">
       {/* Custom Cursor - only on desktop */}
       {showCursor && (
         <div
-          className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
+          // className="fixed w-6 h-6 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ease-out"
           style={{
             left: mousePosition.x - 12,
             top: mousePosition.y - 12,
@@ -131,13 +130,13 @@ const App = () => {
       <main className="pt-20">{renderActiveSection()}</main>
 
       {/* Footer (commented for now) */}
-      {/* <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
+      <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-white/60">
-            Made with 💜 by Sooraj • © 2025 All rights reserved
+            Made with 💜 by Sooraj.
           </p>
         </div>
-      </footer> */}
+      </footer>
     </div>
   );
 };

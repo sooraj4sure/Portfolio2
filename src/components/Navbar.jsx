@@ -10,7 +10,7 @@ const Navbar = ({ activeSection, setActiveSection, isMenuOpen, setIsMenuOpen }) 
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-            Sooraj4Sure
+            Sooraj
           </div>
 
           {/* Desktop Navigation */}
