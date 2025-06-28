@@ -30,17 +30,17 @@ const HomeSection = ({ typewriterText }) => {
       link: "https://we-meet-video-calling-app.vercel.app/",
       code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-"
     },
-    {
-      id: 14,
-      name: "My Portfolio",
-      description: "Personal portfolio showcasing projects and skills with responsive design.",
-      tech: ["React", "CSS", "JavaScript"],
-      category: "React",
-      image: "🌐",
-      color: "from-cyan-300/20 to-blue-400/20",
-      link: "https://sooraj-khaki.vercel.app/",
-      code: "https://github.com/sooraj4sure/Portfolio2"
-    }
+  {
+    id: 3,
+    name: "Rock-Paper-Scissor Game",
+    description: "Play against the computer with randomized logic and score tracking.",
+    tech: ["HTML", "CSS", "JavaScript"],
+    category: "JavaScript",
+    image: "✊✋✌️",
+    color: "from-pink-200/20 to-yellow-200/20",
+    link: "https://rock-paper-scissor-one-drab.vercel.app/",
+    code: "https://github.com/sooraj4sure/Rock-Paper-Scissor"
+  },
   ];
 
   return (
