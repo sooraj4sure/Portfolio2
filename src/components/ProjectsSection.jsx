@@ -6,11 +6,11 @@ const projects = [
      {
     id: 20,
     name: "Anvi.",
-    description: "MERN STACK, Jewelley shop , two front end pages for admin and customer ",
+    description: "MERN STACK, jewellery shop , two front end pages for admin and customer ",
     tech: ["React", "Node.js", "MongoDB","Express",],
     category: "MERN",
     image: "💎",
-    color: "from-teal-500/20 to-blue-100/20",
+    color: "from-teal-200/20 to-green-100/20",
     link: "https://anvi-frontend.vercel.app/",
     code: "https://github.com/sooraj4sure/anvi-frontend"
   },
