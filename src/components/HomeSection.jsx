@@ -14,7 +14,7 @@ const HomeSection = ({ typewriterText }) => {
       description: "MERN STACK, Jewelley shop , two front end pages for admin and customer",
       tech: ["React", "Node.js", "MongoDB", "Express"],
       category: "MERN",
-      image: "📹",
+      image: "💎",
       color: "from-teal-500/20 to-blue-100/20",
       link: "https://anvi-frontend.vercel.app/",
       code: "https://github.com/sooraj4sure/anvi-frontend"
