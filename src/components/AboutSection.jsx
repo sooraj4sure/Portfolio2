@@ -52,7 +52,7 @@ const AboutSection = () => (
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-white/70">Favorite Stack</span>
-                <span className="text-white font-semibold">React / MERN</span>
+                <span className="text-white font-semibold">MERN</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-white/70">Superpower</span>

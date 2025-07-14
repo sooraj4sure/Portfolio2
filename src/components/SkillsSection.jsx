@@ -4,7 +4,7 @@ const skills = [
     //removing skill % for now 
   { name: "React", level: 95, icon: "⚛️" },
   { name: "JavaScript", level: 90, icon: "📈" },
-  { name: "Next.Js", level: 85, icon: "📊" },
+  // { name: "Next.Js", level: 85, icon: "📊" },
   { name: "CSS", level: 92, icon: "🎨" },
   { name: "Node.js", level: 80, icon: "🟢" },
   { name: "Express.Js", level: 88, icon: "🕸️" },

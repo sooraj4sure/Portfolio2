@@ -39,7 +39,7 @@ const HomeSection = ({ typewriterText }) => {
       category: "MERN",
       image: "🤖",
     color: "from-blue-400/20 to-pink-100/20",
-      link: "sylvie-pink.vercel.app",
+      link: "https://sylvie-pink.vercel.app/",
       code: ""
     },
     {

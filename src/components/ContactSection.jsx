@@ -87,7 +87,7 @@ const ContactSection = ({
               </div>
               <div className="flex items-center text-white/80">
                 <MessageCircle className="mr-4 text-pink-400" size={24} />
-                <span>Available for freelance work</span>
+                <span>Available for work</span>
               </div>
             </div>
           </div>

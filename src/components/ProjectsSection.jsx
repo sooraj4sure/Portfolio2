@@ -32,8 +32,8 @@ const projects = [
       tech: ["React", "Node.js", "MongoDB", "Express"],
       category: "MERN",
       image: "🤖",
-    color: "from-emrald-400/20 to-pink-100/20",
-      link: "sylvie-pink.vercel.app",
+    color: "from-blue-400/20 to-pink-100/20",
+      link: "https://sylvie-pink.vercel.app/",
       code: ""
     },
      {
