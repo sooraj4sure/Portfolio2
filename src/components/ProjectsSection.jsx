@@ -2,6 +2,17 @@ import React from 'react';
 import { Eye, Github } from 'lucide-react';
 
 const projects = [
+     {
+      id: 25,
+      name: "Sketi",
+      description: "React, Painting generation , using HuggingFace API",
+      tech: ["React", "Javascript"],
+      category: "React",
+      image: "🖼️",
+    color: "from-green-300/20 to-red-200/20",
+      link: "https://sketi.onrender.com/",
+      code: "https://github.com/sooraj4sure/Sketi.git"
+    },
 
      {
     id: 20,
@@ -14,6 +25,17 @@ const projects = [
     link: "https://anvi-frontend.vercel.app/",
     code: "https://github.com/sooraj4sure/anvi-frontend"
   },
+          {
+      id: 26,
+      name: "Sylvie",
+      description: "React ,Express.js, AI chat bot, Text support , Groq Api",
+      tech: ["React", "Node.js", "MongoDB", "Express"],
+      category: "MERN",
+      image: "🤖",
+    color: "from-emrald-400/20 to-pink-100/20",
+      link: "sylvie-pink.vercel.app",
+      code: ""
+    },
      {
     id: 5,
     name: "WeMeet",
