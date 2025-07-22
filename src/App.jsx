@@ -5,7 +5,7 @@ import {
   Instagram,
   Twitter,
   Mail,
-  MessageCircle,  
+  MessageCircle,
   ArrowRight,
   Menu,
   X,
@@ -18,6 +18,8 @@ import ProjectsSection from "./components/ProjectsSection";
 import SkillsSection from "./components/SkillsSection";
 // import TestimonialsSection from "./components/TestimonialsSection";
 import ContactSection from "./components/ContactSection";
+import CertificateSection from "./components/CertificateSection";
+
 
 const App = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -78,6 +80,10 @@ const App = () => {
             setSelectedFilter={setSelectedFilter}
           />
         );
+
+      case "certificates":
+        return <CertificateSection />;
+
       case "skills":
         return <SkillsSection />;
       // case "testimonials":
@@ -106,8 +112,7 @@ const App = () => {
   };
 
   return (
-    <div
-      className="min-h-screen bg-black text-green-500 overflow-x-hidden font-mono">
+    <div className="min-h-screen bg-black text-green-500 overflow-x-hidden font-mono">
       {/* Custom Cursor - only on desktop */}
       {showCursor && (
         <div
@@ -132,9 +137,7 @@ const App = () => {
       {/* Footer (commented for now) */}
       <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-white/60">
-            Made with 💜 by Sooraj.
-          </p>
+          <p className="text-white/60">Made with 💜 by Sooraj.</p>
         </div>
       </footer>
     </div>

@@ -1,4 +1,5 @@
 
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Eye, Github } from "lucide-react";
@@ -15,11 +16,10 @@ const HomeSection = ({ typewriterText }) => {
       tech: ["React", "Javascript"],
       category: "React",
       image: "🖼️",
-    color: "from-green-300/20 to-red-200/20",
+      color: "from-green-300/20 to-red-200/20",
       link: "https://sketi.onrender.com/",
       code: "https://github.com/sooraj4sure/Sketi.git"
     },
-
     {
       id: 20,
       name: "Anvi.",
@@ -27,18 +27,18 @@ const HomeSection = ({ typewriterText }) => {
       tech: ["React", "Node.js", "MongoDB", "Express"],
       category: "MERN",
       image: "💎",
-    color: "from-teal-200/20 to-green-100/20",
+      color: "from-teal-200/20 to-green-100/20",
       link: "https://anvi-frontend.vercel.app/",
       code: "https://github.com/sooraj4sure/anvi-frontend"
     },
-        {
+    {
       id: 26,
       name: "Sylvie",
       description: "React ,Express.js, AI chat bot, Text support , Groq Api",
       tech: ["React", "Node.js", "MongoDB", "Express"],
       category: "MERN",
       image: "🤖",
-    color: "from-blue-400/20 to-pink-100/20",
+      color: "from-blue-400/20 to-pink-100/20",
       link: "https://sylvie-pink.vercel.app/",
       code: ""
     },
@@ -53,17 +53,17 @@ const HomeSection = ({ typewriterText }) => {
       link: "https://we-meet-video-calling-app.vercel.app/",
       code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-"
     },
-  {
-    id: 3,
-    name: "Rock-Paper-Scissor Game",
-    description: "Play against the computer with randomized logic and score tracking.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    category: "JavaScript",
-    image: "✊✋✌️",
-    color: "from-pink-200/20 to-yellow-200/20",
-    link: "https://rock-paper-scissor-one-drab.vercel.app/",
-    code: "https://github.com/sooraj4sure/Rock-Paper-Scissor"
-  },
+    {
+      id: 3,
+      name: "Rock-Paper-Scissor Game",
+      description: "Play against the computer with randomized logic and score tracking.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      category: "JavaScript",
+      image: "✊✋✌️",
+      color: "from-pink-200/20 to-yellow-200/20",
+      link: "https://rock-paper-scissor-one-drab.vercel.app/",
+      code: "https://github.com/sooraj4sure/Rock-Paper-Scissor"
+    },
   ];
 
   return (
@@ -131,13 +131,13 @@ const HomeSection = ({ typewriterText }) => {
           </motion.h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map((project) => (
+            {featuredProjects.map((project, index) => (
               <motion.div 
                 key={project.id}
                 className={`group relative bg-gradient-to-br ${project.color} backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 cursor-pointer`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * project.id }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
                 viewport={{ once: true }}
               >
                 <div className="text-6xl mb-6 text-center group-hover:scale-110 transition-transform duration-300">
@@ -191,15 +191,6 @@ const HomeSection = ({ typewriterText }) => {
               </motion.div>
             ))}
           </div>
-
-          {/* <div className="text-center mt-12">
-            <a 
-              to="/projects" 
-              className="inline-block px-6 py-3 border border-purple-400 text-purple-400 font-medium rounded-full hover:bg-purple-400/10 transition-colors duration-300"
-            >
-              View All Projects
-            </a>
-          </div> */}
         </div>
       </section>
     </>

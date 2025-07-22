@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = ({ activeSection, setActiveSection, isMenuOpen, setIsMenuOpen }) => {
-  const sections = ['home', 'about', 'projects', 'skills',  'contact'];
-//   'testimonials'
+  const sections = ['home', 'about', 'projects',  'certificates','skills', 'contact'];
+  // Add 'certificates' here
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
