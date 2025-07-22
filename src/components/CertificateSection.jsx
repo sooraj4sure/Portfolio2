@@ -7,45 +7,45 @@ const certificates = [
     title: "Programming With Python",
     issuer: "Harvard University",
     date: "July 2025",
-    image: "./src/certificates/CS50P.png",
+    image: "/certificates/CS50P.png",
   },
   {
     title: "Cybersecurity Skilling Program",
     issuer: "C3iHub IIT Kanpur",
     date: "June 2023",
-    image: "./src/certificates/CyberIIT.jpg",
+    image: "/certificates/CyberIIT.jpg",
   },
   {
     title: "3D Modelling by Autodesk",
     issuer: "Cognizance'22 - IIT Roorkee",
     date: "March 2022",
-    image: "./src/certificates/Autodesk.jpg",
+    image: "/certificates/Autodesk.jpg",
   },
     {
     title: "Software Engineering Virtual Experience Program",
     issuer: "HP - Hewlett Packard x Forage",
     date: "November 2022",
     // url: "https://example.com/certificate/web",
-    image: "./src/certificates/hp.jpg",
+    image: "/certificates/hp.jpg",
   },
   {
     title: "Google Workspace Administrator",
     issuer: "Google Cloud x Coursera",
     date: "March 2024",
-    image: "./src/certificates/GoogleWorkspace.jpg",
+    image: "/certificates/GoogleWorkspace.jpg",
   },
   {
     title:
       "Machine Learning to Deep Learning: A Journey for Remote Sensing Data Classification",
     issuer: "ISRO",
     date: "July 2022",
-    image: "./src/certificates/ISRO-ML.jpg",
+    image: "/certificates/ISRO-ML.jpg",
   },
   {
     title:  "Basics of Remote Sensing, Geographical Information System and Global Navigation",
     issuer: "ISRO",
     date: "November 2022",
-    image: "./src/certificates/RemoteSensing.jpg",
+    image: "/certificates/RemoteSensing.jpg",
   },
 
 
