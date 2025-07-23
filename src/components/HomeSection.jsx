@@ -4,7 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Eye, Github } from "lucide-react";
 import { Link } from 'react-router-dom';
-import devImg from "../assets/Luffy1.png"; 
+// import devImg from "../assets/Luffy1.png"; 
+import devImg from "../assets/kilua3.png"; 
 
 const HomeSection = ({ typewriterText }) => {
   // Select first 5 projects from your projects data
@@ -72,11 +73,11 @@ const HomeSection = ({ typewriterText }) => {
         <div className="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="flex justify-center md:justify-start">
             <div className="relative group">
-              <div className="rounded-full flex items-center justify-center text-8xl transform hover:scale-105 transition-all duration-500 hover:rotate-3 shadow-2xl shadow-purple-500">
+              <div className="rounded-full flex bg-gray-900 items-center justify-center text-8xl transform hover:scale-105 transition-all duration-500 hover:rotate-3 shadow-2xl shadow-purple-500">
                 <motion.img
                   src={devImg}
                   alt=""
-                  className="w-80 h-auto shadow-2xl shadow-purple-500 rounded-md transition-transform duration-300 ease-in-out hover:scale-110"
+                  className="w-80 h-auto  shadow-2xl shadow-purple-500 rounded-md transition-transform duration-300 ease-in-out hover:scale-110"
                 />
               </div>
             </div>
