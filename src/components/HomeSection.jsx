@@ -1,11 +1,9 @@
-
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Mail, Eye, Github } from "lucide-react";
-import { Link } from 'react-router-dom';
-// import devImg from "../assets/Luffy1.png"; 
-import devImg from "../assets/kilua3.png"; 
+import { Link } from "react-router-dom";
+// import devImg from "../assets/Luffy1.png";
+import devImg from "../assets/kilua3.png";
 
 const HomeSection = ({ typewriterText }) => {
   // Select first 5 projects from your projects data
@@ -19,18 +17,19 @@ const HomeSection = ({ typewriterText }) => {
       image: "🖼️",
       color: "from-green-300/20 to-red-200/20",
       link: "https://sketi.onrender.com/",
-      code: "https://github.com/sooraj4sure/Sketi.git"
+      code: "https://github.com/sooraj4sure/Sketi.git",
     },
     {
       id: 20,
       name: "Anvi.",
-      description: "MERN STACK, Jewellery shop , two front end pages for admin and customer",
+      description:
+        "MERN STACK, Jewellery shop , two front end pages for admin and customer",
       tech: ["React", "Node.js", "MongoDB", "Express"],
       category: "MERN",
       image: "💎",
       color: "from-teal-200/20 to-green-100/20",
       link: "https://anvi-frontend.vercel.app/",
-      code: "https://github.com/sooraj4sure/anvi-frontend"
+      code: "https://github.com/sooraj4sure/anvi-frontend",
     },
     {
       id: 26,
@@ -41,8 +40,53 @@ const HomeSection = ({ typewriterText }) => {
       image: "🤖",
       color: "from-blue-400/20 to-pink-100/20",
       link: "https://sylvie-pink.vercel.app/",
-      code: ""
+      code: "",
     },
+
+    {
+      id: 97,
+      name: "EDA in Banking Using Python",
+      description:
+        "Performed exploratory data analysis on a banking dataset using Pandas. Created and analyzed pivot tables, and visualized trends with multiple plots.",
+      tech: ["Python", "Jupyter Notebook", "Pandas", "NumPy", "Matplotlib"],
+      category: "Data Science",
+      image: "📊",
+      color: "from-blue-200/20 to-green-200/20",
+      // link: "https://your-link-here.com",
+      code: "https://github.com/sooraj4sure/Banking-EDA-Python.git",
+    },
+    {
+      id: 99,
+      name: "Loan Approval Prediction",
+      description:
+        "Built a machine learning model to predict loan approvals based on income, employment type, credit score, and loan amount using classification algorithms.",
+      tech: [
+        "Python",
+        "Jupyter Notebook",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn",
+      ],
+      category: "Machine Learning",
+      image: "💳",
+      color: "from-purple-200/20 to-pink-200/20",
+      // link: "https://your-link-here.com",
+      code: "https://github.com/sooraj4sure/Loan-Approval-Prediction.git",
+    },
+    {
+      id: 98,
+      name: "Banking Customer Churn Analysis",
+      description:
+        "Analyzed customer churn patterns in the banking sector with in-depth EDA to identify key factors influencing customer retention.",
+      tech: ["Python", "Jupyter Notebook", "Pandas", "NumPy", "Matplotlib"],
+      category: "Data Science",
+      image: "🏦",
+      color: "from-yellow-200/20 to-red-200/20",
+      // link: "https://your-link-here.com",
+      code: "https://github.com/sooraj4sure/Banking-Customer-Churn-Analysis.git",
+    },
+
     {
       id: 5,
       name: "WeMeet",
@@ -52,18 +96,19 @@ const HomeSection = ({ typewriterText }) => {
       image: "📹",
       color: "from-teal-300/20 to-blue-200/20",
       link: "https://we-meet-video-calling-app.vercel.app/",
-      code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-"
+      code: "https://github.com/sooraj4sure/WeMeet-Video-calling-app-",
     },
     {
       id: 3,
       name: "Rock-Paper-Scissor Game",
-      description: "Play against the computer with randomized logic and score tracking.",
+      description:
+        "Play against the computer with randomized logic and score tracking.",
       tech: ["HTML", "CSS", "JavaScript"],
       category: "JavaScript",
       image: "✊✋✌️",
       color: "from-pink-200/20 to-yellow-200/20",
       link: "https://rock-paper-scissor-one-drab.vercel.app/",
-      code: "https://github.com/sooraj4sure/Rock-Paper-Scissor"
+      code: "https://github.com/sooraj4sure/Rock-Paper-Scissor",
     },
   ];
 
@@ -98,9 +143,9 @@ const HomeSection = ({ typewriterText }) => {
             </div>
 
             <p className="text-lg text-white/70 leading-relaxed max-w-lg">
-              I craft digital experiences that make people go "wow!" Obsessed with
-              clean code, aesthetic design, and pushing the boundaries of what's
-              possible on the web.
+              I craft digital experiences that make people go "wow!" Obsessed
+              with clean code, aesthetic design, and pushing the boundaries of
+              what's possible on the web.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -119,7 +164,7 @@ const HomeSection = ({ typewriterText }) => {
       {/* Featured Projects Section */}
       <section className="py-4 bg-gradient-to-b from-black/0 to-purple-900/10">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.h2 
+          <motion.h2
             className="text-3xl md:text-4xl font-bold text-white mb-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -133,7 +178,7 @@ const HomeSection = ({ typewriterText }) => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map((project, index) => (
-              <motion.div 
+              <motion.div
                 key={project.id}
                 className={`group relative bg-gradient-to-br ${project.color} backdrop-blur-xl rounded-2xl p-8 border border-white/10 hover:border-purple-400/50 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2 cursor-pointer`}
                 initial={{ opacity: 0, y: 20 }}
