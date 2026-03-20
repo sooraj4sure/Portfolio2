@@ -742,7 +742,7 @@ const HomeSection = ({ typewriterText }) => {
         <div className="absolute inset-0 pointer-events-none" style={{ background:"linear-gradient(180deg,transparent,rgba(245,197,24,0.025) 50%,transparent)" }} />
         <Halftone opacity={0.022} size={7} />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <ChapterHeader ch="01" title="Den Den Mushi Scrolls" sub="Certified & Battle-Tested" />
+          <ChapterHeader ch="01" title="Certificates" sub="Certified & Battle-Tested" />
 
           {/* rank legend */}
           <motion.div
