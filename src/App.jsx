@@ -36,7 +36,7 @@ const App = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState("");
 
-  const fullText = "Web Developer & Creative Coder";
+  const fullText = "AI Enthusiast & Creative Coder";
 
   useEffect(() => {
     let index = 0;
@@ -135,11 +135,11 @@ const App = () => {
       <main className="pt-20">{renderActiveSection()}</main>
 
       {/* Footer (commented for now) */}
-      <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
+      {/* <footer className="bg-black/20 backdrop-blur-xl border-t border-white/10 py-8">
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="text-white/60">Made with 💜 by Sooraj.</p>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };
