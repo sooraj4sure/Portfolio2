@@ -157,7 +157,7 @@ const HomeSection = ({ setActiveSection }) => {
             </div>
 
             {/* Right: photo — subtle corner placement */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
               transition={{ duration: .8, delay: .3 }}
               style={{ position: "relative", flexShrink: 0 }}
@@ -178,7 +178,7 @@ const HomeSection = ({ setActiveSection }) => {
                   background: "linear-gradient(to top, rgba(8,12,16,.5) 0%, transparent 50%)",
                 }} />
                 {/* offset accent frame */}
-                <div style={{
+                {/* <div style={{
                   position: "absolute", top: 10, right: -10,
                   width: "100%", height: "100%",
                   border: "1px solid rgba(232,197,90,.1)",
@@ -195,7 +195,7 @@ const HomeSection = ({ setActiveSection }) => {
                 <strong style={{ color: "var(--gold)", display: "block", fontSize: ".7rem" }}>Delhi, India</strong>
                 Open to Work
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* ── FEATURED PROJECTS STRIP ── */}
