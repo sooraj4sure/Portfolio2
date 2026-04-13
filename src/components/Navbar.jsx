@@ -3,18 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const LINKS = [
-  { id: "home",         label: "Home"         },
-  { id: "about",        label: "About"        },
-  { id: "experience",   label: "Experience"   },
-  { id: "projects",     label: "Projects"     },
-  { id: "skills",       label: "Skills"       },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
   { id: "certificates", label: "Certificates" },
-  { id: "contact",      label: "Contact"      },
+  { id: "contact", label: "Contact" },
 ];
 
 const Navbar = ({ activeSection, setActiveSection }) => {
-  const [scrolled,   setScrolled]   = useState(false);
-  const [menuOpen,   setMenuOpen]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
@@ -46,15 +46,22 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       <motion.nav
         initial={{ y: -60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: .6, ease: [.23,1,.32,1] }}
+        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         style={{
-          position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 1000,
           padding: "1rem 2rem",
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-          background:   scrolled ? "rgba(8,12,16,.94)" : "transparent",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          background: scrolled ? "rgba(8,12,16,.94)" : "transparent",
           backdropFilter: scrolled ? "blur(22px)" : "none",
           borderBottom: scrolled ? "1px solid var(--border)" : "none",
-          transition: "background .35s, backdrop-filter .35s, border-color .35s",
+          transition:
+            "background .35s, backdrop-filter .35s, border-color .35s",
         }}
       >
         {/* Logo */}
@@ -64,14 +71,19 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             fontFamily: "var(--font-display)",
             fontSize: "1.25rem",
             color: "var(--text)",
-            background: "none", border: "none", cursor: "pointer",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
           }}
         >
           Sooraj<span style={{ color: "var(--gold)" }}>.</span>
         </button>
 
         {/* Desktop links */}
-        <div className="hidden md:flex" style={{ display: "flex", alignItems: "center", gap: "1.8rem" }}>
+        <div
+          className="hidden md:flex"
+          style={{ alignItems: "center", gap: "1.8rem" }}
+        >
           {LINKS.map((l) => (
             <button
               key={l.id}
@@ -83,7 +95,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 letterSpacing: ".14em",
                 textTransform: "uppercase",
                 color: activeSection === l.id ? "var(--gold)" : "var(--muted)",
-                background: "none", border: "none", cursor: "pointer",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
                 transition: "color .2s",
               }}
             >
@@ -107,15 +121,26 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             textDecoration: "none",
             transition: "background .2s, color .2s",
           }}
-          onMouseEnter={e => { e.target.style.background = "var(--gold)"; e.target.style.color = "var(--bg)"; }}
-          onMouseLeave={e => { e.target.style.background = ""; e.target.style.color = "var(--gold)"; }}
+          onMouseEnter={(e) => {
+            e.target.style.background = "var(--gold)";
+            e.target.style.color = "var(--bg)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = "";
+            e.target.style.color = "var(--gold)";
+          }}
         >
           Hire Me
         </a>
 
         {/* Mobile burger */}
         <button
-          style={{ background: "none", border: "none", cursor: "pointer", color: "var(--text)", display: "none" }}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "var(--text)",
+          }}
           className="md:hidden block"
           onClick={() => setMenuOpen(!menuOpen)}
         >
@@ -130,10 +155,15 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: .25 }}
+            transition={{ duration: 0.25 }}
             style={{
-              position: "fixed", top: "60px", left: 0, right: 0, zIndex: 999,
-              background: "rgba(8,12,16,.98)", backdropFilter: "blur(20px)",
+              position: "fixed",
+              top: "60px",
+              left: 0,
+              right: 0,
+              zIndex: 999,
+              background: "rgba(8,12,16,.98)",
+              backdropFilter: "blur(20px)",
               borderBottom: "1px solid var(--border)",
               padding: "1.5rem 2rem",
             }}
@@ -143,15 +173,22 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 key={l.id}
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * .05 }}
+                transition={{ delay: i * 0.05 }}
                 onClick={() => handleNav(l.id)}
                 style={{
-                  display: "block", width: "100%", textAlign: "left",
+                  display: "block",
+                  width: "100%",
+                  textAlign: "left",
                   padding: ".75rem 0",
-                  fontFamily: "var(--font-mono)", fontSize: ".75rem",
-                  letterSpacing: ".14em", textTransform: "uppercase",
-                  color: activeSection === l.id ? "var(--gold)" : "var(--muted)",
-                  background: "none", border: "none", cursor: "pointer",
+                  fontFamily: "var(--font-mono)",
+                  fontSize: ".75rem",
+                  letterSpacing: ".14em",
+                  textTransform: "uppercase",
+                  color:
+                    activeSection === l.id ? "var(--gold)" : "var(--muted)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
                   borderBottom: "1px solid var(--border)",
                 }}
               >
