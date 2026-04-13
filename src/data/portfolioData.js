@@ -10,6 +10,14 @@ export const certificates = [
     rank: "S",
     domain: "CS / AI",
   },
+    {
+    title: "Prompt Engineering",
+    issuer: "Columbia +",
+    date: "August 2025",
+    image: "/certificates/PE_Columbia+.jpg",
+    rank: "S",
+    domain: "CS / AI",
+  },
   {
     title: "Cybersecurity Skilling Program",
     issuer: "C3iHub IIT Kanpur",
@@ -26,6 +34,17 @@ export const certificates = [
     rank: "A",
     domain: "Design",
   },
+
+  {
+    title: "Cloud Computing",
+    issuer: "NIELIT Delhi",
+    date: "January 2025",
+    image: "/certificates/CC_NIELIT.jpg",
+    rank: "B",
+    domain: "CS",
+  },
+
+
   {
     title: "Software Engineering Virtual Experience",
     issuer: "HP x Forage",
@@ -58,6 +77,33 @@ export const certificates = [
     rank: "B",
     domain: "Data Science",
   },
+
+  {
+    title: "Campus Ambassador",
+    issuer: "IIT Delhi",
+    date: "December 2025",
+    image: "/certificates/IIT_D.jpg",
+    rank: "B",
+    domain: "IT",
+  },
+  {
+    title: "Machine Learning Intern",
+    issuer: "CODEC Technologies",
+    date: "01/12/2025 - 01/04/2026",
+    image: "/certificates/Codec_ml_int.jpg",
+    rank: "A",
+    domain: "AI / ML",
+  },
+
+  {
+    title: "Data Science Intern",
+    issuer: "CODEC Technologies",
+    date: "01/10/2025 - 26/11/2025",
+    image: "/certificates/IIT_BHU_INT.jpg",
+    rank: "A",
+    domain: "DS / ML",
+  },
+
 ];
 
 // ─────────────────────────────────────────
@@ -66,10 +112,10 @@ export const certificates = [
 export const projects = [
   // ── NEW ML Projects ──
   { id: "ml1", name: "Resume Lab",        type: "ML · NLP",          desc: "AI resume analyzer that parses CVs, scores them against job descriptions using NLP, and gives ATS optimization feedback.",          tech: ["Python","NLP","Streamlit","Scikit-learn"], link: "https://resume-lab.streamlit.app/",        code: "https://github.com/sooraj4sure/Resume-lab",                            featured: true, isML: true },
-  { id: "ml2", name: "CineMatch",         type: "ML · Recommendation",desc: "Movie recommendation engine using collaborative filtering. Input preferences → get personalized picks with similarity scores.",  tech: ["Python","Pandas","Cosine Similarity","Streamlit"], link: "https://cinematch4u.streamlit.app/",   code: "https://github.com/sooraj4sure/Movie-Recommendation-ML-Model",         featured: true, isML: true },
+  { id: "ml2", name: "CineMatch",         type: "ML · Recommendation",desc: "Movie recommendation engine using collaborative filtering. Input preferences → get personalized picks with similarity scores.",  tech: ["Python","Pandas","Cosine Similarity","Streamlit"], link: "https://cinematch4u.streamlit.app/",   code: "https://github.com/sooraj4sure/Movie-Recommendation-ML-Model",         featured: false, isML: true },
   { id: "ml3", name: "EmoSenseAI",        type: "NLP · Emotion AI",  desc: "Emotion detection trained on text data using NLP preprocessing and ML classifiers. Real-time emotion classification via web UI.", tech: ["Python","NLTK","Scikit-learn","EDA","Streamlit"], link: "https://emosenseai.streamlit.app",     code: "https://github.com/sooraj4sure/Emotion-EDA-NLP-ML-model",             featured: true, isML: true },
-  { id: "ml4", name: "HeartDisease Predictor", type: "ML · Healthcare",  desc: "Binary classification model predicting heart disease risk from clinical parameters. Feature importance + XGBoost comparison.", tech: ["Python","XGBoost","Matplotlib","Streamlit"], link: "https://heartdiseasemodel.streamlit.app/", code: "https://github.com/sooraj4sure/Heart-disease-DS-",                  featured: true, isML: true },
-  { id: "ml5", name: "VelvetPaw",         type: "Full-Stack · React", desc: "Data collection platform for pet-related content. Form-driven pipelines, real-time validation, polished React frontend.",         tech: ["React","Node.js","MongoDB","Tailwind"],    link: "https://velvetpow.vercel.app/",            code: "https://github.com/sooraj4sure/velvetpow",                             featured: true, isML: false },
+  { id: "ml4", name: "HeartDisease Predictor", type: "ML · Healthcare",  desc: "Binary classification model predicting heart disease risk from clinical parameters. Feature importance + XGBoost comparison.", tech: ["Python","XGBoost","Matplotlib","Streamlit"], link: "https://heartdiseasemodel.streamlit.app/", code: "https://github.com/sooraj4sure/Heart-disease-DS-",                  featured: false, isML: true },
+  { id: "ml5", name: "VelvetPaw",         type: "Full-Stack · React", desc: "Data collection platform for pet-related content. Form-driven pipelines, real-time validation, polished React frontend.",         tech: ["React","Node.js","MongoDB","Tailwind"],    link: "https://velvetpow.vercel.app/",            code: "https://github.com/sooraj4sure/velvetpow",                             featured: false, isML: false },
   // ── Existing Projects ──
   { id: 25, name: "Sketi",           type: "React · AI",        desc: "Painting generation using HuggingFace API",                                               tech: ["React","JavaScript"],                          link: "https://sketi.onrender.com/",                                  code: "https://github.com/sooraj4sure/Sketi.git",                              featured: false, isML: false },
   { id: 20, name: "Anvi.",           type: "MERN",               desc: "MERN jewellery shop — admin & customer portals",                                          tech: ["React","Node.js","MongoDB","Express"],          link: "https://anvi-frontend.vercel.app/",                            code: "https://github.com/sooraj4sure/anvi-frontend",                          featured: false, isML: false },
@@ -104,18 +150,34 @@ export const skillGroups = [
 // ─────────────────────────────────────────
 export const experience = [
   {
-    period: "Jan 2025 – Present",
+    period: "Apr 2026 – Present",
     title: "Machine Learning Developer",
     company: "Freelance / Self-Initiated",
     color: "#e8c55a",
     desc: "Designed and deployed production-ready ML applications covering NLP, predictive analytics, and recommender systems. Built end-to-end pipelines from data collection through model training, evaluation, and Streamlit deployment.",
     tags: ["Python","Scikit-learn","Streamlit","NLP","EDA","XGBoost"],
   },
+    {
+    period: "Dec 2025 – Apr 2026",
+    title: "Machine Learning Intern",
+    company: "Codec Technologies",
+    color: "#e8c55a",
+    desc: "Designed and deployed production-ready ML applications covering NLP, predictive analytics, and recommender systems. Built end-to-end pipelines from data collection through model training, evaluation, and Streamlit deployment.",
+    tags: ["Python","Scikit-learn","Numpy","Pandas","EDA"],
+  },
   {
-    period: "2023 – 2024",
+    period: "Oct 2025 – Dec - 2025",
+    title: "Data Science Intern",
+    company: "Technex'25 by IIT-BHU",
+    color: "#e8c55a",
+    desc: "Built full-stack MERN applications with RESTful APIs, real-time features using WebRTC & Socket.IO, and responsive UIs. Gained hands-on experience with MongoDB, Express.js, and Node.js backend architecture.",
+    tags: ["Python","Matplotlib","Seaborn","Scikit-learn","Numpy","Pandas","EDA"],
+  },
+    {
+    period: "2025 – 2025",
     title: "Full-Stack Web Developer",
     company: "Academic & Personal Projects",
-    color: "#2dd4bf",
+    color: "#e8c55a",
     desc: "Built full-stack MERN applications with RESTful APIs, real-time features using WebRTC & Socket.IO, and responsive UIs. Gained hands-on experience with MongoDB, Express.js, and Node.js backend architecture.",
     tags: ["React","Node.js","MongoDB","Express","Tailwind","WebRTC","Socket.IO"],
   },

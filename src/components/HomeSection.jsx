@@ -7,7 +7,7 @@ import devImg from "../assets/Luffy1.png";
 /* ── Featured ML projects shown on home ── */
 const featuredProjects = projects.filter((p) => p.featured);
 /* ── Featured certs (top 3 by rank S first) ── */
-const featuredCerts = certificates.filter((c) => c.rank === "S" || c.rank === "A").slice(0, 3);
+const featuredCerts = certificates.filter((c) => c.rank === "S" || c.rank === "A").slice(0, 2);
 
 const RANK_COLOR = { S: "#e8c55a", A: "#ef4444", B: "#3b82f6" };
 
@@ -80,7 +80,7 @@ const HomeSection = ({ setActiveSection }) => {
                   fontFamily: "var(--font-mono)", fontSize: ".65rem",
                   letterSpacing: ".22em", textTransform: "uppercase", color: "var(--teal)",
                 }}>
-                  Available for opportunities
+                  Available for Freelancing
                 </span>
               </motion.div>
 
@@ -147,7 +147,7 @@ const HomeSection = ({ setActiveSection }) => {
                 transition={{ duration: .6, delay: .65 }}
                 style={{ display: "flex", gap: "2.5rem", flexWrap: "wrap" }}
               >
-                {[["5+","ML Projects"],["35+","Skills"],["20+","Total Projects"]].map(([num,lbl]) => (
+                {[["20+","Total Projects "],["35+","Skills"],["5+","ML Projects"]].map(([num,lbl]) => (
                   <div key={lbl}>
                     <div style={{ fontFamily: "var(--font-display)", fontSize: "2.2rem", lineHeight: 1, color: "var(--text)" }}>{num}</div>
                     <div style={{ fontFamily: "var(--font-mono)", fontSize: ".6rem", letterSpacing: ".15em", textTransform: "uppercase", color: "var(--dim)", marginTop: ".2rem" }}>{lbl}</div>
