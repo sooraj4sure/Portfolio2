@@ -1,352 +1,246 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn } from "lucide-react";
+import { certificates } from "../data/portfolioData";
 
-/* ══════════════════════════════════════════════
-   SHARED HELPERS
-══════════════════════════════════════════════ */
-const Halftone = ({ opacity = 0.03, size = 8 }) => (
-  <div
-    className="absolute inset-0 pointer-events-none"
-    style={{
-      backgroundImage: "radial-gradient(circle,rgba(255,255,255,0.8) 1px,transparent 1px)",
-      backgroundSize: `${size}px ${size}px`,
-      opacity,
-    }}
-  />
-);
-
-/* ══════════════════════════════════════════════
-   DATA
-══════════════════════════════════════════════ */
-const certificates = [
-  { title: "Programming With Python",             issuer: "Harvard University",        date: "July 2025",     image: "/certificates/CS50P.png",           rank: "S", domain: "CS / AI" },
-  { title: "Cybersecurity Skilling Program",       issuer: "C3iHub IIT Kanpur",         date: "June 2023",    image: "/certificates/CyberIIT.jpg",         rank: "A", domain: "Security" },
-  { title: "3D Modelling by Autodesk",             issuer: "Cognizance'22 IIT Roorkee", date: "March 2022",   image: "/certificates/Autodesk.jpg",         rank: "A", domain: "Design" },
-  { title: "Software Engineering Virtual Experience", issuer: "HP x Forage",           date: "November 2022", image: "/certificates/hp.jpg",              rank: "B", domain: "Engineering" },
-  { title: "Google Workspace Administrator",       issuer: "Google Cloud x Coursera",  date: "March 2024",   image: "/certificates/GoogleWorkspace.jpg",  rank: "A", domain: "Cloud" },
-  { title: "Machine Learning to Deep Learning",    issuer: "ISRO",                      date: "July 2022",    image: "/certificates/ISRO-ML.jpg",          rank: "S", domain: "ML / AI" },
-  { title: "Basics of Remote Sensing & GIS",       issuer: "ISRO",                      date: "November 2022",image: "/certificates/RemoteSensing.jpg",    rank: "B", domain: "Data Science" },
-];
-
-const RANK_STYLE = {
-  S: { bg: "bg-yellow-400",  text: "text-black",  glow: "shadow-yellow-400/70", label: "Legendary" },
-  A: { bg: "bg-red-600",     text: "text-white",  glow: "shadow-red-500/70",    label: "Elite"     },
-  B: { bg: "bg-blue-600",    text: "text-white",  glow: "shadow-blue-500/70",   label: "Skilled"   },
-};
+const RANK_COLOR = { S: "#e8c55a", A: "#ef4444", B: "#3b82f6" };
+const RANK_LABEL = { S: "Legendary", A: "Elite", B: "Skilled" };
 
 const DOMAIN_COLOR = {
-  "CS / AI":       "bg-violet-500/15 text-violet-300 border-violet-500/25",
-  "Security":      "bg-red-500/15 text-red-300 border-red-500/25",
-  "Design":        "bg-fuchsia-500/15 text-fuchsia-300 border-fuchsia-500/25",
-  "Engineering":   "bg-cyan-500/15 text-cyan-300 border-cyan-500/25",
-  "Cloud":         "bg-blue-500/15 text-blue-300 border-blue-500/25",
-  "ML / AI":       "bg-amber-500/15 text-amber-300 border-amber-500/25",
-  "Data Science":  "bg-emerald-500/15 text-emerald-300 border-emerald-500/25",
+  "CS / AI":      "rgba(167,139,250,.7)",
+  "Security":     "rgba(251,113,133,.7)",
+  "Design":       "rgba(232,121,249,.7)",
+  "Engineering":  "rgba(56,189,248,.7)",
+  "Cloud":        "rgba(96,165,250,.7)",
+  "ML / AI":      "rgba(251,191,36,.7)",
+  "Data Science": "rgba(52,211,153,.7)",
 };
 
-/* ══════════════════════════════════════════════
-   CERT CARD
-══════════════════════════════════════════════ */
+/* ── Zoom Modal ── */
+const Modal = ({ cert, onClose }) => (
+  <motion.div
+    initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+    onClick={onClose}
+    style={{
+      position: "fixed", inset: 0, zIndex: 2000,
+      background: "rgba(0,0,0,.85)", backdropFilter: "blur(12px)",
+      display: "flex", alignItems: "center", justifyContent: "center",
+      padding: "2rem",
+    }}
+  >
+    <motion.div
+      initial={{ scale: .88, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: .88, y: 20 }}
+      transition={{ duration: .35, ease: [.23,1,.32,1] }}
+      onClick={e => e.stopPropagation()}
+      style={{
+        background: "var(--surface)", border: "1px solid var(--border2)",
+        maxWidth: 780, width: "100%", overflow: "hidden",
+        boxShadow: "0 40px 100px rgba(0,0,0,.8)",
+      }}
+    >
+      {/* Image */}
+      <div style={{ position: "relative" }}>
+        <img
+          src={cert.image}
+          alt={cert.title}
+          style={{ width: "100%", display: "block", maxHeight: 480, objectFit: "contain", background: "var(--surface2)" }}
+        />
+        <button
+          onClick={onClose}
+          style={{
+            position: "absolute", top: "1rem", right: "1rem",
+            width: 36, height: 36, borderRadius: "50%",
+            background: "rgba(0,0,0,.7)", border: "1px solid var(--border2)",
+            color: "var(--text)", cursor: "pointer",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}
+        >
+          <X size={15} />
+        </button>
+      </div>
+      {/* Info */}
+      <div style={{ padding: "1.5rem 2rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: ".8rem", marginBottom: ".6rem" }}>
+          <span style={{
+            width: 28, height: 28, borderRadius: "50%",
+            background: RANK_COLOR[cert.rank],
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontFamily: "var(--font-mono)", fontWeight: 700, fontSize: ".7rem",
+            color: cert.rank === "S" ? "var(--bg)" : "#fff",
+            flexShrink: 0,
+          }}>{cert.rank}</span>
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: ".62rem", letterSpacing: ".15em", textTransform: "uppercase", color: RANK_COLOR[cert.rank], opacity: .85 }}>{RANK_LABEL[cert.rank]}</span>
+        </div>
+        <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", color: "var(--text)", marginBottom: ".4rem" }}>{cert.title}</h3>
+        <p style={{ fontFamily: "var(--font-mono)", fontSize: ".68rem", color: "var(--teal)", letterSpacing: ".1em" }}>{cert.issuer} · {cert.date}</p>
+      </div>
+    </motion.div>
+  </motion.div>
+);
+
+/* ── Cert Card ── */
 const CertCard = ({ cert, index, onOpen }) => {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-55px" });
   const [hov, setHov] = useState(false);
-  const rs = RANK_STYLE[cert.rank];
 
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50, rotateX: 14 }}
-      animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 0.58, delay: index * 0.08, ease: [0.23, 1, 0.32, 1] }}
-      whileHover={{ y: -10, scale: 1.04 }}
-      className="relative cursor-pointer group"
-      style={{ perspective: 700 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: .55, delay: index * .07, ease: [.23,1,.32,1] }}
+      viewport={{ once: true }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       onClick={() => onOpen(cert)}
+      style={{
+        background: "var(--surface)",
+        border: `1px solid ${hov ? "rgba(232,197,90,.22)" : "var(--border)"}`,
+        overflow: "hidden", cursor: "pointer",
+        transform: hov ? "translateY(-5px)" : "none",
+        boxShadow: hov ? "0 20px 50px rgba(0,0,0,.55)" : "none",
+        transition: "all .3s ease",
+      }}
     >
-      {/* animated chase border on hover */}
-      <AnimatePresence>
-        {hov && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="absolute -inset-0.5 rounded-xl pointer-events-none overflow-hidden z-10"
-          >
-            <div
-              className="absolute inset-0 rounded-xl"
-              style={{
-                background: "linear-gradient(90deg,#f5c518,#dc2626,#f5c518,#dc2626,#f5c518)",
-                backgroundSize: "300% 100%",
-                animation: "borderChase 2s linear infinite",
-              }}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div
-        className="relative overflow-hidden rounded-xl border border-white/10 bg-black/55 h-full flex flex-col"
-        style={{ boxShadow: hov ? "0 20px 50px rgba(0,0,0,0.65), inset 0 0 35px rgba(0,0,0,0.5)" : "0 4px 20px rgba(0,0,0,0.45), inset 0 0 30px rgba(0,0,0,0.5)", transition: "box-shadow 0.4s ease" }}
-      >
-        <Halftone opacity={0.04} size={6} />
-
-        {/* rank badge */}
-        <div
-          className={`absolute top-2.5 right-2.5 z-20 w-8 h-8 rounded-full flex items-center justify-center font-black shadow-lg ${rs.bg} ${rs.text} ${rs.glow}`}
-          style={{ fontFamily: "'Bangers',cursive", fontSize: "1rem" }}
-        >{cert.rank}</div>
-
-        {/* image */}
-        <div className="relative overflow-hidden h-44 flex-shrink-0">
-          <img
-            src={cert.image}
-            alt={cert.title}
-            className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent" />
-
-          {/* zoom hint */}
-          <motion.div
-            className="absolute inset-0 flex items-center justify-center"
-            animate={{ opacity: hov ? 1 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="w-11 h-11 rounded-full bg-yellow-400/20 border border-yellow-400/60 flex items-center justify-center backdrop-blur-sm">
-              <ZoomIn size={16} className="text-yellow-400" />
-            </div>
-          </motion.div>
-
-          {/* domain pill on image */}
-          <div className="absolute bottom-2 left-2">
-            <span
-              className={`inline-flex items-center px-2 py-0.5 rounded border text-[9px] ${DOMAIN_COLOR[cert.domain] || "bg-white/10 text-white/50 border-white/15"}`}
-              style={{ fontFamily: "'Share Tech Mono',monospace" }}
-            >{cert.domain}</span>
-          </div>
-        </div>
-
-        {/* info */}
-        <div className="p-4 relative z-10 flex flex-col flex-1">
-          <h3
-            className="text-white leading-snug mb-1.5 group-hover:text-yellow-300 transition-colors duration-300 line-clamp-2"
-            style={{ fontFamily: "'Bangers',cursive", letterSpacing: "0.04em", fontSize: "1rem" }}
-          >{cert.title}</h3>
-
-          <p className="text-yellow-400/65 text-[10px] leading-snug" style={{ fontFamily: "'Share Tech Mono',monospace" }}>{cert.issuer}</p>
-          <p className="text-white/30 text-[10px] mt-0.5" style={{ fontFamily: "'Share Tech Mono',monospace" }}>{cert.date}</p>
-
-          {/* rank label bottom */}
-          <div className="mt-auto pt-3 flex items-center gap-1.5">
-            <div className={`w-1.5 h-1.5 rounded-full ${rs.bg}`} />
-            <span className="text-white/25 text-[9px] tracking-widest uppercase" style={{ fontFamily: "'Share Tech Mono',monospace" }}>{rs.label} Rank</span>
-          </div>
-        </div>
-
-        {/* hover inner glow */}
-        <motion.div
-          className="absolute inset-0 rounded-xl pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at center,rgba(245,197,24,0.055) 0%,transparent 70%)" }}
-          animate={{ opacity: hov ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+      {/* Certificate image */}
+      <div style={{ height: 170, position: "relative", overflow: "hidden", background: "var(--surface2)" }}>
+        <img
+          src={cert.image}
+          alt={cert.title}
+          style={{
+            width: "100%", height: "100%", objectFit: "cover",
+            display: "block",
+            transform: hov ? "scale(1.06)" : "scale(1)",
+            transition: "transform .55s ease",
+          }}
+          onError={e => {
+            e.target.style.display = "none";
+          }}
         />
-      </div>
-    </motion.div>
-  );
-};
+        {/* Gradient overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(to top, rgba(17,24,32,.85) 0%, rgba(17,24,32,.1) 60%, transparent 100%)",
+        }} />
 
-/* ══════════════════════════════════════════════
-   CERT MODAL
-══════════════════════════════════════════════ */
-const CertModal = ({ cert, onClose }) => {
-  useEffect(() => {
-    const fn = e => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", fn);
-    return () => window.removeEventListener("keydown", fn);
-  }, [onClose]);
-
-  const rs = RANK_STYLE[cert.rank];
-
-  return (
-    <motion.div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      onClick={onClose}
-    >
-      <motion.div className="absolute inset-0 bg-black/92 backdrop-blur-xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} />
-
-      <motion.div
-        initial={{ scale: 0.45, opacity: 0, rotateY: -30 }}
-        animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-        exit={{ scale: 0.45, opacity: 0, rotateY: 30 }}
-        transition={{ type: "spring", stiffness: 270, damping: 22 }}
-        className="relative max-w-3xl w-full z-10"
-        onClick={e => e.stopPropagation()}
-        style={{ perspective: 900 }}
-      >
-        {/* glowing border */}
-        <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-yellow-400 via-red-600 to-yellow-400 opacity-75 blur-sm" />
-        <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-yellow-400 via-red-600 to-yellow-400" />
-
-        <div className="relative bg-black rounded-2xl overflow-hidden">
-          {/* close */}
-          <motion.button
-            onClick={onClose}
-            whileHover={{ scale: 1.15, rotate: 90 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-3 right-3 z-20 w-9 h-9 bg-red-600 hover:bg-red-500 rounded-full flex items-center justify-center"
-          ><X size={14} className="text-white" /></motion.button>
-
-          {/* rank badge on modal */}
-          <div
-            className={`absolute top-3 left-3 z-20 w-9 h-9 rounded-full flex items-center justify-center font-black shadow-lg ${rs.bg} ${rs.text}`}
-            style={{ fontFamily: "'Bangers',cursive", fontSize: "1.1rem" }}
-          >{cert.rank}</div>
-
-          <img src={cert.image} alt={cert.title} className="w-full max-h-[68vh] object-contain" />
-
-          <div className="p-5 text-center border-t border-yellow-400/20 relative">
-            <Halftone opacity={0.03} size={7} />
-            <span
-              className={`inline-flex items-center px-2 py-0.5 rounded border text-[9px] mb-2 ${DOMAIN_COLOR[cert.domain] || "bg-white/10 text-white/50 border-white/15"}`}
-              style={{ fontFamily: "'Share Tech Mono',monospace" }}
-            >{cert.domain}</span>
-            <h3
-              className="text-yellow-400 text-2xl mb-1 block"
-              style={{ fontFamily: "'Bangers',cursive", letterSpacing: "0.08em", textShadow: "0 0 20px rgba(245,197,24,0.4)" }}
-            >{cert.title}</h3>
-            <p className="text-white/45 text-sm" style={{ fontFamily: "'Share Tech Mono',monospace" }}>
-              {cert.issuer} · {cert.date}
-            </p>
+        {/* Zoom hint */}
+        <div style={{
+          position: "absolute", inset: 0,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          opacity: hov ? 1 : 0, transition: "opacity .25s",
+        }}>
+          <div style={{
+            width: 44, height: 44, borderRadius: "50%",
+            background: "rgba(232,197,90,.15)", border: "1px solid rgba(232,197,90,.5)",
+            backdropFilter: "blur(4px)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <ZoomIn size={16} color="var(--gold)" />
           </div>
         </div>
-      </motion.div>
-    </motion.div>
-  );
-};
 
-/* ══════════════════════════════════════════════
-   RANK LEGEND ITEM
-══════════════════════════════════════════════ */
-const RankLegendItem = ({ rank, delay }) => {
-  const rs = RANK_STYLE[rank];
-  const count = certificates.filter(c => c.rank === rank).length;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.4 }}
-      viewport={{ once: true }}
-      className="flex items-center gap-2.5"
-    >
-      <div className={`w-7 h-7 rounded-full flex items-center justify-center font-black ${rs.bg} ${rs.text} shadow-lg ${rs.glow}`}
-        style={{ fontFamily: "'Bangers',cursive", fontSize: "0.9rem" }}
-      >{rank}</div>
-      <div>
-        <p className="text-white/70 text-[11px]" style={{ fontFamily: "'Oswald',sans-serif", letterSpacing: "0.06em" }}>{rs.label}</p>
-        <p className="text-white/25 text-[9px]" style={{ fontFamily: "'Share Tech Mono',monospace" }}>{count} scroll{count !== 1 ? "s" : ""}</p>
+        {/* Rank badge */}
+        <div style={{
+          position: "absolute", top: 10, right: 10,
+          width: 30, height: 30, borderRadius: "50%",
+          background: RANK_COLOR[cert.rank],
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontFamily: "var(--font-mono)", fontWeight: 700,
+          fontSize: ".7rem",
+          color: cert.rank === "S" ? "var(--bg)" : "#fff",
+          boxShadow: `0 0 12px ${RANK_COLOR[cert.rank]}80`,
+          zIndex: 2,
+        }}>{cert.rank}</div>
+
+        {/* Domain badge */}
+        <span style={{
+          position: "absolute", bottom: 10, left: 10,
+          fontFamily: "var(--font-mono)", fontSize: ".55rem",
+          letterSpacing: ".12em", textTransform: "uppercase",
+          color: DOMAIN_COLOR[cert.domain] || "var(--dim)",
+          background: "rgba(0,0,0,.6)", border: `1px solid ${DOMAIN_COLOR[cert.domain] || "var(--border)"}44`,
+          padding: ".2rem .5rem", backdropFilter: "blur(4px)",
+          zIndex: 2,
+        }}>{cert.domain}</span>
+      </div>
+
+      {/* Card info */}
+      <div style={{ padding: "1.2rem 1.4rem" }}>
+        {/* Accent left bar */}
+        <div style={{
+          position: "absolute", left: 0, top: "170px", bottom: 0,
+          width: 2, background: RANK_COLOR[cert.rank], opacity: .4,
+        }} />
+
+        <p style={{
+          fontFamily: "var(--font-mono)", fontSize: ".58rem",
+          letterSpacing: ".18em", textTransform: "uppercase",
+          color: "var(--gold)", opacity: .6, marginBottom: ".5rem",
+        }}>{cert.issuer}</p>
+
+        <h3 style={{
+          fontFamily: "var(--font-display)", fontSize: "1.1rem",
+          color: "var(--text)", lineHeight: 1.3, marginBottom: ".4rem",
+        }}>{cert.title}</h3>
+
+        <p style={{
+          fontFamily: "var(--font-mono)", fontSize: ".6rem",
+          color: "var(--dim)", letterSpacing: ".08em",
+        }}>{cert.date}</p>
       </div>
     </motion.div>
   );
 };
 
-/* ══════════════════════════════════════════════
-   MAIN
-══════════════════════════════════════════════ */
 const CertificateSection = () => {
-  const [selectedCert, setSelectedCert] = useState(null);
+  const [selected, setSelected] = useState(null);
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Oswald:wght@400;700&family=Share+Tech+Mono&display=swap');
-        @keyframes borderChase {
-          0%   { background-position: 0% 50%; }
-          100% { background-position: 200% 50%; }
-        }
-      `}</style>
+      <section id="certificates" className="section" style={{ background: "var(--bg2)" }}>
+        <div className="container">
+          <p className="section-label reveal">Certificates</p>
+          <h2 className="section-heading reveal"><em>Verified</em> Learning</h2>
+          <p className="section-sub reveal">Professional certifications — click any card to view full certificate</p>
 
-      <section id="certificates" className="py-24 relative overflow-hidden">
-        <Halftone opacity={0.022} size={9} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(180deg,transparent,rgba(245,197,24,0.025) 50%,transparent)" }} />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(135deg,transparent 55%,rgba(245,197,24,0.015) 55%,rgba(245,197,24,0.015) 58%,transparent 58%)" }} />
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-
-          {/* ── CHAPTER HEADER ── */}
+          {/* Stats row */}
           <motion.div
-            className="text-center mb-14 relative"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: .5 }} viewport={{ once: true }}
+            style={{ display: "flex", gap: "2.5rem", marginBottom: "3rem", flexWrap: "wrap" }}
           >
-            <span
-              className="absolute inset-0 flex items-center justify-center text-[11rem] font-black text-white/[0.018] select-none pointer-events-none leading-none"
-              style={{ fontFamily: "'Bangers',cursive" }}
-            >05</span>
-
-            <p className="text-yellow-400/40 tracking-[0.45em] text-[10px] uppercase mb-2"
-              style={{ fontFamily: "'Share Tech Mono',monospace" }}>── Chapter 05 ──</p>
-            <h2
-              className="text-6xl md:text-7xl text-white leading-none mb-2"
-              style={{
-                fontFamily: "'Bangers',cursive",
-                letterSpacing: "0.06em",
-                textShadow: "3px 3px 0 #7f1d1d, 7px 7px 24px rgba(220,38,38,0.25)",
-              }}
-            >Den Den Mushi Scrolls</h2>
-            <p className="text-white/30 text-[10px] tracking-[0.35em] uppercase"
-              style={{ fontFamily: "'Share Tech Mono',monospace" }}>
-              Certified & Battle-Tested — Proof of the Journey
-            </p>
-            <motion.div
-              className="mx-auto mt-4 h-px bg-gradient-to-r from-transparent via-yellow-400/70 to-transparent"
-              initial={{ width: 0 }}
-              whileInView={{ width: "55%" }}
-              transition={{ duration: 0.9, delay: 0.35 }}
-              viewport={{ once: true }}
-            />
-          </motion.div>
-
-          {/* ── RANK LEGEND ── */}
-          <motion.div
-            className="flex flex-wrap items-center justify-center gap-8 mb-12 p-5 rounded-2xl border border-white/8 bg-black/30 backdrop-blur-sm max-w-md mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-            style={{ boxShadow: "inset 0 0 30px rgba(0,0,0,0.5)" }}
-          >
-            {/* corner marks */}
-            {["top-2 left-2 border-t border-l", "top-2 right-2 border-t border-r", "bottom-2 left-2 border-b border-l", "bottom-2 right-2 border-b border-r"].map((cls, i) => (
-              <div key={i} className={`absolute w-3 h-3 ${cls} border-yellow-400/30`} />
+            {[
+              { num: certificates.length, label: "Total Certificates", color: "var(--gold)"   },
+              { num: certificates.filter(c => c.rank === "S").length, label: "Legendary (S)",  color: "#e8c55a" },
+              { num: certificates.filter(c => c.rank === "A").length, label: "Elite (A)",       color: "#ef4444" },
+            ].map(({ num, label, color }) => (
+              <div key={label}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "2.4rem", lineHeight: 1, color }}>
+                  {num}
+                </div>
+                <p style={{ fontFamily: "var(--font-mono)", fontSize: ".6rem", letterSpacing: ".14em", textTransform: "uppercase", color: "var(--dim)", marginTop: ".2rem" }}>{label}</p>
+              </div>
             ))}
-            <p className="w-full text-center text-white/20 text-[9px] tracking-[0.3em] uppercase mb-1" style={{ fontFamily: "'Share Tech Mono',monospace" }}>Rank System</p>
-            {["S", "A", "B"].map((r, i) => <RankLegendItem key={r} rank={r} delay={0.1 * i} />)}
           </motion.div>
 
-          {/* ── GRID ── */}
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {/* Grid */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "1.4rem" }}>
             {certificates.map((cert, i) => (
-              <CertCard key={i} cert={cert} index={i} onOpen={setSelectedCert} />
+              <CertCard key={i} cert={cert} index={i} onOpen={setSelected} />
             ))}
           </div>
 
-          {/* ── HINT ── */}
-          <motion.p
-            className="text-center text-white/18 text-[9px] mt-6 tracking-[0.35em] uppercase"
-            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1 }} viewport={{ once: true }}
-            style={{ fontFamily: "'Share Tech Mono',monospace" }}
-          >↑ Click any scroll to expand ↑</motion.p>
-
+          <p style={{
+            fontFamily: "var(--font-mono)", fontSize: ".6rem",
+            color: "var(--dim)", letterSpacing: ".1em",
+            textAlign: "center", marginTop: "2.5rem",
+          }}>
+            Click any certificate card to view the full image
+          </p>
         </div>
       </section>
 
-      {/* ── MODAL ── */}
+      {/* Zoom modal */}
       <AnimatePresence>
-        {selectedCert && <CertModal cert={selectedCert} onClose={() => setSelectedCert(null)} />}
+        {selected && <Modal cert={selected} onClose={() => setSelected(null)} />}
       </AnimatePresence>
     </>
   );
