@@ -64,7 +64,7 @@ const HomeSection = ({ setActiveSection }) => {
             {/* Left: text */}
             <div>
               {/* Eyebrow */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: .6, delay: .1 }}
                 style={{ display: "flex", alignItems: "center", gap: ".6rem", marginBottom: "1.4rem" }}
@@ -82,7 +82,7 @@ const HomeSection = ({ setActiveSection }) => {
                 }}>
                   Available for Freelancing
                 </span>
-              </motion.div>
+              </motion.div> */}
 
               {/* Name */}
               <motion.h1
